@@ -57,11 +57,9 @@ In our case the first missing character is on 9th position from right side, so o
 
 We may launch program with parameters:
 
-Run test: ```WifSolverCuda.exe -stride 7479027ea100 -u -rangeStart 80c59cb0997ad73f7bf8621b1955caf80b304ded0a48e5b8f28c7b89f466ff5f68e2677283 -a 19NzcPZvZMSNQk8sDbSiyjeKpEVpaS1212```
+Run test (~3 minutes): ```WifSolverCuda_102_ccap54.exe -c -fstatus status_zz.txt -checksum a0f9fb72 -stride 4194afe74e855d1ce9b2ccbf4b91b829adf07249998c39bc55a40000000000 -rangeStart 800000000000006632f52651bd0c91ccbe5b4199f10ae6861d490a28441b6c473901a0f9fb72 -a 1Dy1vfPU4Et3VsmyxmDpsGgTXUq9pFwh7a```
 
-![111](https://user-images.githubusercontent.com/82582647/159039808-c006b275-b9a0-4760-a4ac-f2660f19ccf1.png)
-
-![222](https://user-images.githubusercontent.com/82582647/159042694-51404b39-ca4a-4fb9-9e54-f9babe6c9af4.png)
+![1](https://user-images.githubusercontent.com/82582647/161133955-8b0cb24b-2279-4bd2-a52a-2a8e2f98e78d.png)
 
 Solver for described example is based on fact that stride modifies decoded checksum. Program verifies checksum (2*sha256) and only valid WIFs are checked agains expected address (pubkey->hashes->address).
     
