@@ -59,17 +59,15 @@ We may launch program with parameters:
 
 Run test (~3 minutes): ```WifSolverCuda_102_ccap54.exe -c -fstatus status_zz.txt -checksum a0f9fb72 -stride 4194afe74e855d1ce9b2ccbf4b91b829adf07249998c39bc55a40000000000 -rangeStart 800000000000006632f52651bd0c91ccbe5b4199f10ae6861d490a28441b6c473901a0f9fb72 -a 1Dy1vfPU4Et3VsmyxmDpsGgTXUq9pFwh7a```
 
-![1](https://user-images.githubusercontent.com/82582647/161133955-8b0cb24b-2279-4bd2-a52a-2a8e2f98e78d.png)
+![889](https://user-images.githubusercontent.com/82582647/161397512-b0386be7-7769-4cfa-be47-fd6909249197.png)
 
 Solver for described example is based on fact that stride modifies decoded checksum. Program verifies checksum (2*sha256) and only valid WIFs are checked agains expected address (pubkey->hashes->address).
     
 Similar test for compressed WIF (target _KzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzWK7YY3s_):
 
-Run test: ```WifSolverCuda.exe -stride 7479027ea100 -c -rangeStart 8070cfa0d40309798a5bd144a396478b5b5ae3305b7413601b18767654f1108a02787692623a -a 1PzaLTZS3J3HqGfsa8Z2jfkCT1QpSMVunD```
+Run test: ```WifSolverCuda.exe -stride 7479027ea100 -c -rangeStart 8070cfa0d40309798a5bd144a396478b5b5ae3305b7413601b18767654f1108a02787692623a -a 1XXXXTZS3J3HqGfsa8Z2jfkCT1QpSMVunD```
 
-![333](https://user-images.githubusercontent.com/82582647/159042280-bc2114c4-859d-4dc2-b455-cfb3a21223b6.png)
-
-![444](https://user-images.githubusercontent.com/82582647/159042341-afcd39da-a7db-48e4-9b3d-6a02023517a0.png)
+![7988](https://user-images.githubusercontent.com/82582647/161397705-9300e582-9011-4d0f-9058-bd3a72b8e867.png)
 
 For other of examples please see the file [examples](https://github.com/phrutis/WifSolverCuda/blob/main/docs/examples.txt) 
 
@@ -108,9 +106,6 @@ TODO
 * auto-processing (preparing configuration) based on WIF
 * support for partially known checksum
 
-Contact:
--------
-Contact email: pawgo@protonmail.com</br>
 If you found this program useful, consider making a donation, I will appreciate it! <br>
 
 Donation:
