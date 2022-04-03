@@ -55,20 +55,20 @@ Another important step is to calculate stride. Each change of unknown characters
 In our case the first missing character is on 9th position from right side, so our [stride](https://github.com/phrutis/WifSolverCuda/blob/main/docs/stride.txt) is
 58^8 = 7479027ea100
 
-### Job calculation RTX 3090 (~4Gkey/s)
+### Job calculation RTX 2070 (1.4Gkey/s)
 
 |    Unknown      |      Combinations      |  Need  |
 |-----------------|------------------------|--------|
 |  3 characters   | 195112                 | 1s     |
 |  4 characters   | 11316496               | 1s     |
 |  5 characters   | 656356768              | 1s     |
-|  6 characters   | 38068692544            | 40s    |
-|  7 characters   | 2207984167552          | 10m    |
-|  8 characters   | 128063081718016        | 9h     |
-|  9 characters   | 7427658739644928       | 21d 12h|
-|  10 characters  | 430804206899405824     | 3y 196d|
-|  11 characters  | 24986644000165537792   | 198y   |
-|  12 characters  | 449225352009601191936  | 11,489y|
+|  6 characters   | 38068692544            | 27s    |
+|  7 characters   | 2207984167552          | 26m    |
+|  8 characters   | 128063081718016        | 1d 1h  |
+|  9 characters   | 7427658739644928       | 61d    |
+|  10 characters  | 430804206899405824     | 10y    |
+|  11 characters  | 24986644000165537792   | 566y   |
+|  12 characters  | 449225352009601191936  | 33,174y|
 
 You can search for your WIF ourself. </br>
 If there are a lot of characters and you do not decompose the GPU with resources! </br>
