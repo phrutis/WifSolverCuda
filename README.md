@@ -55,7 +55,30 @@ Another important step is to calculate stride. Each change of unknown characters
 In our case the first missing character is on 9th position from right side, so our [stride](https://github.com/phrutis/WifSolverCuda/blob/main/docs/stride.txt) is
 58^8 = 7479027ea100
 
-We may launch program with parameters:
+### Job calculation RTX 3090 (~4Gkey/s)
+
+|    Unknown      |      Combinations      |  Need  |
+|-----------------|------------------------|--------|
+|  3 characters   | 195112                 | 1s     |
+|  4 characters   | 11316496               | 1s     |
+|  5 characters   | 656356768              | 1s     |
+|  6 characters   | 38068692544            | 40s    |
+|  7 characters   | 2207984167552          | 10m    |
+|  8 characters   | 128063081718016        | 9h     |
+|  9 characters  | 7427658739644928       | 21d 12h|
+|  10 characters | 430804206899405824     | 3y 196d|
+|  11 characters | 24986644000165537792   | 198y   |
+|  12 characters  | 449225352009601191936  | 11,489y|
+
+You can search for your WIourself.
+If there are a lot of characters and you do not decompose the GPU with resources!
+You can contact our group for help in telegrams.
+We have quite a lot of GPU resources and we can rent additionally.
+The commission is discussed individually.
+
+If you are a miner or have more than 100,777 and can quickly (upon request) use your resources to complete the task.
+You can become a member of our team, for this, contact our group.
+Commission, conditions are negotiated individually. 
 
 Run test (~2 minutes): ```WifSolverCuda_102_ccap54.exe -c -fstatus status_zz.txt -checksum a0f9fb72 -stride 4194afe74e855d1ce9b2ccbf4b91b829adf07249998c39bc55a40000000000 -rangeStart 800000000000006632f52651bd0c91ccbe5b4199f10ae6861d490a28441b6c473901a0f9fb72 -a 1Dy1vfPU4Et3VsmyxmDpsGgTXUq9pFwh7a```
 
