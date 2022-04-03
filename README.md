@@ -131,5 +131,5 @@ If you found this program useful, consider making a donation, I will appreciate 
 
 Donation:
 ---------
-- PawelGorny (author): bc1qz2akvlch75rqdfg8pv7chqvz3m8jsl49k0kszc </br>
-- Phrutis: bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
+- [PawelGorny](https://github.com/PawelGorny) (author)    bc1qz2akvlch75rqdfg8pv7chqvz3m8jsl49k0kszc </br>
+- [phrutis](https://github.com/phrutis) (modification) bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
