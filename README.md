@@ -1,5 +1,5 @@
 # WifSolverCuda
-forked from [WifSolverCuda](https://github.com/PawelGorny/WifSolverCuda) <br>
+This is a modified version of WifSolverCuda v0.5.0 by [PawGo](https://github.com/PawelGorny) </br>
 Tool for solving misspelled or damaged Bitcoin Private Key in Wallet Import Format (WIF)
 
 Usage:
@@ -76,11 +76,11 @@ You can contact our group for help in telegrams https://t.me/+mAY1x5YYuL8yNjQy <
 We have quite a lot of GPU resources and we can rent additionally. </br>
 The commission is discussed individually.
 
-If you are a miner or have more than 100 GPUs and can quickly (upon request) use your resources to complete the task. </br>
-You can become a member of our team, for this, contact our group https://t.me/+mAY1x5YYuL8yNjQy </br>
-Commission, conditions are negotiated individually. 
+If you are a miner or have more than 10 GPUs and can quickly (upon request) use your resources to complete the task. </br>
+You can become a member of our team, for this, contact our GPU group https://t.me/+iifCJCKkqRw3N2Fi
+Commission, conditions are negotiated individually.
 
-P.S. If you don't have 100 gpu or WIF key. Don't waste our time, don't join the group. </br>
+P.S. If you don't have 10 gpu or WIF key. Don't waste our time, don't join the group. </br>
 If you have general questions ask them [**here**](https://github.com/phrutis/WifSolverCuda/issues)
 
 Run test (~2 minutes): ```WifSolverCuda_102_ccap54.exe -c -fstatus status_zz.txt -checksum a0f9fb72 -stride 4194afe74e855d1ce9b2ccbf4b91b829adf07249998c39bc55a40000000000 -rangeStart 800000000000006632f52651bd0c91ccbe5b4199f10ae6861d490a28441b6c473901a0f9fb72 -a 1Dy1vfPU4Et3VsmyxmDpsGgTXUq9pFwh7a```
