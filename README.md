@@ -77,7 +77,7 @@ We have quite a lot of GPU resources and we can rent additionally. </br>
 The commission is discussed individually.
 
 If you are a miner or have more than 10 GPUs and can quickly (upon request) use your resources to complete the task. </br>
-You can become a member of our team, for this, contact our GPU group https://t.me/+iifCJCKkqRw3N2Fi </br>
+You can become a member of our team, for this, contact our GPU group https://t.me/+WFEuFatijpowMjRi </br>
 Commission, conditions are negotiated individually.
 
 P.S. If you don't have 10 gpu or WIF key. Don't waste our time, don't join the group. </br>
