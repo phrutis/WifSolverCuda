@@ -2,73 +2,59 @@
 This is a modified version of WifSolverCuda v0.5.0 by [PawGo](https://github.com/PawelGorny) </br>
 Tool for solving misspelled or damaged Bitcoin Private Key in Wallet Import Format (WIF)
 
-Usage:
+Help page: ```WifSolverCuda.exe -h```
+```
+C:\Users\User>WifSolverCuda.exe -h
 
-    WifSolverCuda [-d deviceId] [-b NbBlocks] [-t NbThreads] [-s NbThreadChecks]
-         [-fresultp reportFile] [-fresult resultFile] [-fstatus statusFile] [-a targetAddress]
-         -stride hexKeyStride -rangeStart hexKeyStart [-rangeEnd hexKeyEnd] [-checksum hexChecksum] 
-         [-decode wifToDecode]
-         [-restore statusFile]
-         [-listDevices]
-         [-h]
+  WifSolverCuda v1.0 (phrutis modification 04.04.2022)
 
-     -rangeStart hexKeyStart: decoded initial key with compression flag and checksum
-     -rangeEnd hexKeyEnd:     decoded end key with compression flag and checksum
-     -stride hexKeyStride:    full stride calculated as 58^(most-right missing char index)
-	 -checksum hexChecksum:   decoded checksum, cannot be modified with a stride
-	 -a targetAddress:        expected address
-     -fresult resultFile:     file for final result (default: result.txt)
-     -fresultp reportFile:    file for each WIF with correct checksum (default: result_partial.txt)
-     -fstatus statusFile:     file for periodically saved status (default: fileStatus.txt)
-     -fstatusIntv seconds:    period between status file updates (default 60 sec)
-	 -d deviceId:             default 0
-     -c :                     search for compressed address
-     -u :                     search for uncompressed address (default)     
-     -b NbBlocks:             default processorCount * 8
-     -t NbThreads:            default deviceMax/8 * 5
-     -s NbThreadChecks:       default 3364
-     -decode wifToDecode:     decodes given WIF
-     -restore statusFile:     restore work configuration
-     -listDevices:            shows available devices
-     -h :                     shows help
-     
+-wif             START WIF key 5.... (51 characters) or L..., K...., (52 characters)
+-wif2            END WIF key 5.... (51 characters) or L..., K...., (52 characters)
+-a               Bitcoin address 1.... or 3.....
+-n               Letter number from left to right from 9 to 51
+-fresult         The name of the output file about the find (default: FOUND.txt)
+-fname           The name of the checkpoint save file to continue (default: GPUid + Continue.txt)
+-ftime           Save checkpoint to continue every sec (default 60 sec)
+-d               DeviceId. Number GPU (default 0)
+-c               Search for compressed address (default)
+-u               Search for uncompressed address
+-b               NbBlocks. Default processorCount * 8
+-t               NbThreads. Default deviceMax/8 * 5
+-s               NbThreadChecks. Default 5000
+-listDevices     Shows available devices
+-disable-um      Disable unified memory mode
+-h               Shows help page
+ ```   
 
-Program could search for given address or search for any valid WIF with a given configuration. 
- 
 How to use it
 -------------
+The compressed WIF key must span K... or L... contain 52 characters.</br>
+The uncompressed WIF key must span 5... contain 51 characters. Use ```-u``` parameter! </br>
+Replace unknown key characters with ```X``` (min 4, max 12 X)</br>
 
-In my examples I will use WIF 5KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKSmnqY </br>
-which produces address 19NzcPZvZMSNQk8sDbSiyjeKpEVpaS1212 </br>
-The expected private key is: c59cb0997ad73f7bf8621b1955caf80b304ded0a48e5b8f28c7b8f9356ec35e5
-    
-Let's assume we have WIF with 5 missing characters 5KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK?????KKKSmnqY </br>
-We must replace unknown characters by minimal characters from base58 encoding, to produce our starting key. </br>
-WIF 5KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK11111KKKSmnqY could be decoded to: <br>
-Run ```WifSolverCuda.exe -decode 5KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK11111KKKSmnqY``` </br>
-Result: 80c59cb0997ad73f7bf8621b1955caf80b304ded0a48e5b8f28c7b89f466ff5f68e2677283
+Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7   J9tM5JQQSo</br>
+Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQQSo</br>
+BTC address: 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor</br>
 
-In our calculations we need full decoded value, not only private key part. </br>
-The same way we may calculate maximum (end of range) for key processing - replacing unknown characters with 'z'.
+Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXX```X```J9tM5JQQSo</br>
+We need to twist the first unknown letter ```X```, this symbol is number 11</br>
+Minimum position X -n 9 (-n 51 maximum) (1-8 this is the checksum it can't be rotated)</br>
+Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQQSo -n 11 -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
 
-Another important step is to calculate stride. Each change of unknown characters has impact on decoded value.
-In our case the first missing character is on 9th position from right side, so our [stride](https://github.com/phrutis/WifSolverCuda/blob/main/docs/stride.txt) is
-58^8 = 7479027ea100
+![1](https://user-images.githubusercontent.com/82582647/161607233-93a41d63-e506-4369-9785-68036ae794bf.png)
 
-### Job calculation RTX 2070 (1.4Gkey/s)
-
-|    Unknown      |      Combinations      |  Need  |
-|-----------------|------------------------|--------|
-|  3 characters   | 195112                 | 1s     |
-|  4 characters   | 11316496               | 1s     |
-|  5 characters   | 656356768              | 1s     |
-|  6 characters   | 38068692544            | 27s    |
-|  7 characters   | 2207984167552          | 26m    |
-|  8 characters   | 128063081718016        | 1d 1h  |
-|  9 characters   | 7427658739644928       | 61d    |
-|  10 characters  | 430804206899405824     | 10y    |
-|  11 characters  | 24986644000165537792   | 566y   |
-|  12 characters  | 449225352009601191936  | 33,174y|
+| Unknown chars   |      Combinations      |
+|-----------------|------------------------|
+|  3 characters   | 195112                 |
+|  4 characters   | 11316496               |
+|  5 characters   | 656356768              |
+|  6 characters   | 38068692544            |
+|  7 characters   | 2207984167552          |
+|  8 characters   | 128063081718016        |
+|  9 characters   | 7427658739644928       |
+|  10 characters  | 430804206899405824     |
+|  11 characters  | 24986644000165537792   | 
+|  12 characters  | 449225352009601191936  | 
 
 You can search for your WIF ourself. </br>
 If there are a lot of characters and you do not decompose the GPU with resources! </br>
@@ -83,18 +69,11 @@ Commission, conditions are negotiated individually.
 P.S. If you don't have 10 gpu or WIF key. Don't waste our time, don't join the group. </br>
 If you have general questions ask them [**here**](https://github.com/phrutis/WifSolverCuda/issues)
 
-Run test (~2 minutes): ```WifSolverCuda_102_ccap54.exe -c -fstatus status_zz.txt -checksum a0f9fb72 -stride 4194afe74e855d1ce9b2ccbf4b91b829adf07249998c39bc55a40000000000 -rangeStart 800000000000006632f52651bd0c91ccbe5b4199f10ae6861d490a28441b6c473901a0f9fb72 -a 1Dy1vfPU4Et3VsmyxmDpsGgTXUq9pFwh7a```
+### Сontinuation
+Сontinuation of the last checkpoint from the file Сontinuation.txt</br>
+Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7bp7m1SwJ9tM5JQQSo -wif2 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7zzzzzzzJ9tM5JQQSo -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor -c -n 11 -d 0```
 
-![889](https://user-images.githubusercontent.com/82582647/161397512-b0386be7-7769-4cfa-be47-fd6909249197.png)
-
-Solver for described example is based on fact that stride modifies decoded checksum. Program verifies checksum (2*sha256) and only valid WIFs are checked agains expected address (pubkey->hashes->address).
-
-Run test: ```WifSolverCuda.exe -stride 7479027ea100 -c -rangeStart 8070cfa0d40309798a5bd144a396478b5b5ae3305b7413601b18767654f1108a02787692623a -a 1XXXXTZS3J3HqGfsa8Z2jfkCT1QpSMVunD```
-
-![7988](https://user-images.githubusercontent.com/82582647/161397705-9300e582-9011-4d0f-9058-bd3a72b8e867.png)
-
-For other of examples please see the file [examples](https://github.com/phrutis/WifSolverCuda/blob/main/docs/examples.txt) 
-
+![2](https://user-images.githubusercontent.com/82582647/161609712-2111fa71-2e9c-4508-b329-71ebb100d03b.png)
         
 Build
 -----
@@ -111,7 +90,7 @@ Performance
 -----------
 User should modify number of blocks and number of threads in each block to find values which are the best for his card. Number of tests performed by each thread also could have impact of global performance/latency.  
 
-Test card: RTX3060 (eGPU!) with 224 BLOCKS & 640 BLOCK_THREADS (program default values) checks around 10000 MKey/s for compressed address with missing characters in the middle (collision with checksum) and around 1300-1400 Mkey/s for other cases; other results (using default values of blocks, threads and steps per thread):
+Test card: RTX3060 (eGPU!) with 224 BLOCKS & 640 BLOCK_THREADS (program default values) checks around 10000 MKey/s for compressed address with missing characters in the middle (collision with checksum) and around 1300-1400 Mkey/s for other cases; other results.
 
 | card          | compressed with collision | all other cases |
 |---------------|---------------------------|-----------------|
@@ -121,18 +100,9 @@ Test card: RTX3060 (eGPU!) with 224 BLOCKS & 640 BLOCK_THREADS (program default 
 | RTX 2070      | 12 Gkey/s                 | 1.4 Gkey/s      |
 | GTX 1080TI    | 6 Gkey/s                  | 0.7 Gkey/s      |
 
-Please consult official Nvidia Occupancy [Calculator](https://docs.nvidia.com/cuda/cuda-occupancy-calculator/index.html) to see how to select desired amount of threads (shared memory=0, registers per thread = 48).
-       
-TODO
-----
-* code cleaning, review of hash functions
-* predefined custom step (using list of possible characters)
-* auto-processing (preparing configuration) based on WIF
-* support for partially known checksum
-
 If you found this program useful, consider making a donation, I will appreciate it! <br>
 
 Donation:
 ---------
 - [PawelGorny](https://github.com/PawelGorny) (author)    bc1qz2akvlch75rqdfg8pv7chqvz3m8jsl49k0kszc </br>
-- [phrutis](https://github.com/phrutis) (modification) bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
+- [phrutis](https://github.com/phrutis) (modification)    bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
