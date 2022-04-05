@@ -1,4 +1,4 @@
-# WifSolverCuda
+# WifSolverCuda v1.0
 ![116377as-960](https://user-images.githubusercontent.com/82582647/161723196-755b39a1-5fd4-4e9e-bbb6-10932be33244.jpg)
 This is a modified version of WifSolverCuda v0.5.0 by [PawGo](https://github.com/PawelGorny) </br>
 Tool for solving misspelled or damaged Bitcoin Private Key in Wallet Import Format (WIF)
@@ -27,8 +27,7 @@ C:\Users\User>WifSolverCuda.exe -h
 -h               Shows help page
  ```   
 
-How to use it
--------------
+## How to use it
 ![996377as-960](https://user-images.githubusercontent.com/82582647/161723666-490cb467-f184-4bce-84ff-a29ec3d21fd3.jpg)
 The Compressed WIF key must span K... or L... contain 52 characters.</br>
 The Uncompressed WIF key must span 5... contain 51 characters. Use ```-u``` parameter! </br>
@@ -70,7 +69,7 @@ Commission, conditions are negotiated individually.
 P.S. If you don't have 10 gpu or WIF key. Don't waste our time, don't join the group. </br>
 If you have general questions ask them [**here**](https://github.com/phrutis/WifSolverCuda/issues)
 
-### Сontinuation
+## Сontinuation
 Сontinuation of the last checkpoint from the file Сontinuation.txt</br>
 Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7bp7m1SwJ9tM5JQQSo -wif2 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7zzzzzzzJ9tM5JQQSo -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor -c -n 11 -d 0```
 
@@ -80,18 +79,14 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7bp7m1SwJ9tM5JQ
 ### Windows:
 
 #### Microsoft Visual Studio Community 2019
-- RTX 30xx - CUDA version [**11.6**](https://developer.nvidia.com/cuda-11.6-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork) compute_cap=86 </br>
+- RTX 30xx - CUDA version [**11.6**](https://developer.nvidia.com/cuda-11-6-0-download-archive) compute_cap=86 </br>
 - Others GPUs - CUDA version [**10.2**](https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork) compute_cap=54 </br>
 
 ### Linux:
 Go to WifSolverCuda/ subfolder and execute _make all_. If your device does not support compute capability=86 (error "No kernel image is available for execution on the device"), do the change in _Makefile_ (for example 1080Ti requires COMPUTE_CAP=61).
 
 
-Performance
------------
-User should modify number of blocks and number of threads in each block to find values which are the best for his card. Number of tests performed by each thread also could have impact of global performance/latency.  
-
-Test card: RTX3060 (eGPU!) with 224 BLOCKS & 640 BLOCK_THREADS (program default values) checks around 10000 MKey/s for compressed address with missing characters in the middle (collision with checksum) and around 1300-1400 Mkey/s for other cases; other results.
+## Performance
 
 | card          | compressed with collision | all other cases |
 |---------------|---------------------------|-----------------|
@@ -103,7 +98,6 @@ Test card: RTX3060 (eGPU!) with 224 BLOCKS & 640 BLOCK_THREADS (program default 
 
 If you found this program useful, consider making a donation, I will appreciate it! <br>
 
-Donation:
----------
+## Donation
 - [PawelGorny](https://github.com/PawelGorny) (author)    bc1qz2akvlch75rqdfg8pv7chqvz3m8jsl49k0kszc </br>
 - [phrutis](https://github.com/phrutis) (modification)    bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
