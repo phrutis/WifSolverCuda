@@ -1,4 +1,5 @@
 # WifSolverCuda
+![116377as-960](https://user-images.githubusercontent.com/82582647/161723196-755b39a1-5fd4-4e9e-bbb6-10932be33244.jpg)
 This is a modified version of WifSolverCuda v0.5.0 by [PawGo](https://github.com/PawelGorny) </br>
 Tool for solving misspelled or damaged Bitcoin Private Key in Wallet Import Format (WIF)
 
@@ -28,17 +29,17 @@ C:\Users\User>WifSolverCuda.exe -h
 
 How to use it
 -------------
-The compressed WIF key must span K... or L... contain 52 characters.</br>
-The uncompressed WIF key must span 5... contain 51 characters. Use ```-u``` parameter! </br>
-Replace unknown key characters with ```X``` (min 4, max 12 X)</br>
+![996377as-960](https://user-images.githubusercontent.com/82582647/161723666-490cb467-f184-4bce-84ff-a29ec3d21fd3.jpg)
+The Compressed WIF key must span K... or L... contain 52 characters.</br>
+The Uncompressed WIF key must span 5... contain 51 characters. Use ```-u``` parameter! </br>
 
-Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7   J9tM5JQQSo</br>
-Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQQSo</br>
+Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7 J9tM5JQQSo</br>
+Replace unknown (missing) characters in a row with a capital ```X``` (min. 4, max. 12 X)</br>
+We collect the key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXX```X```J9tM5JQQSo (52)</br>
+We need to twist the first unknown letter ```X```, this symbol is number 11</br>
+Minimum position -n 9 (-n 51 max, 1-8 this is the checksum it can't be rotated)</br>
 BTC address: 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor</br>
 
-Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXX```X```J9tM5JQQSo</br>
-We need to twist the first unknown letter ```X```, this symbol is number 11</br>
-Minimum position X -n 9 (-n 51 maximum) (1-8 this is the checksum it can't be rotated)</br>
 Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQQSo -n 11 -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
 
 ![1](https://user-images.githubusercontent.com/82582647/161607233-93a41d63-e506-4369-9785-68036ae794bf.png)
@@ -75,14 +76,14 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7bp7m1SwJ9tM5JQ
 
 ![2](https://user-images.githubusercontent.com/82582647/161609712-2111fa71-2e9c-4508-b329-71ebb100d03b.png)
         
-Build
------
-Windows:
+## Build
+### Windows:
 
-Program was prepared using CUDA 11.6 - for any other version manual change in VS project config files is needed. Exe under /Releases/ was build using compute_cap=86, for cards 30xx. If you have older card, you must rebuild program using older CUDA/lower CCAP.
+#### Microsoft Visual Studio Community 2019
+- RTX 30xx - CUDA version [**11.6**](https://developer.nvidia.com/cuda-11.6-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork) compute_cap=86 </br>
+- Others GPUs - CUDA version [**10.2**](https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork) compute_cap=54 </br>
 
-Linux:
-
+### Linux:
 Go to WifSolverCuda/ subfolder and execute _make all_. If your device does not support compute capability=86 (error "No kernel image is available for execution on the device"), do the change in _Makefile_ (for example 1080Ti requires COMPUTE_CAP=61).
 
 
@@ -97,7 +98,7 @@ Test card: RTX3060 (eGPU!) with 224 BLOCKS & 640 BLOCK_THREADS (program default 
 | RTX 3090      | 29 Gkey/s                 | 4.0 Gkey/s      |
 | RTX 3080 Ti   | 29 Gkey/s                 | 4.0 Gkey/s      |
 | RTX 3060 eGPU | 10 Gkey/s                 | 1.5 Gkey/s      |
-| RTX 2070      | 12 Gkey/s                 | 1.4 Gkey/s      |
+| RTX 2070      | 10 Gkey/s                 | 1.4 Gkey/s      |
 | GTX 1080TI    | 6 Gkey/s                  | 0.7 Gkey/s      |
 
 If you found this program useful, consider making a donation, I will appreciate it! <br>
