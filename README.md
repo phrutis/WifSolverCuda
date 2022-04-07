@@ -1,5 +1,5 @@
-# WifSolverCuda v1.0
-![116377as-960](https://user-images.githubusercontent.com/82582647/161723196-755b39a1-5fd4-4e9e-bbb6-10932be33244.jpg)
+# WifSolverCuda v2.0
+![116377as-960](https://user-images.githubusercontent.com/82582647/161723196-755b39a1-5fd4-4e9e-bbb6-10932be33244.jpg)</br>
 This is a modified version of WifSolverCuda v0.5.0 by [PawGo](https://github.com/PawelGorny) </br>
 Tool for solving misspelled or damaged Bitcoin Private Key in Wallet Import Format (WIF)
 
@@ -7,12 +7,13 @@ Help page: ```WifSolverCuda.exe -h```
 ```
 C:\Users\User>WifSolverCuda.exe -h
 
-  WifSolverCuda v1.0 (phrutis modification 04.04.2022)
+  WifSolverCuda v2.0 (phrutis modification 07.04.2022)
 
 -wif             START WIF key 5.... (51 characters) or L..., K...., (52 characters)
 -wif2            END WIF key 5.... (51 characters) or L..., K...., (52 characters)
 -a               Bitcoin address 1.... or 3.....
 -n               Letter number from left to right from 9 to 51
+-turbo           Quick mode (skip 3 identical letters in a row) -turbo 3 (default: OFF)
 -fresult         The name of the output file about the find (default: FOUND.txt)
 -fname           The name of the checkpoint save file to continue (default: GPUid + Continue.txt)
 -ftime           Save checkpoint to continue every sec (default 60 sec)
@@ -28,20 +29,21 @@ C:\Users\User>WifSolverCuda.exe -h
  ```   
 
 ## How to use it
-![996377as-960](https://user-images.githubusercontent.com/82582647/161723666-490cb467-f184-4bce-84ff-a29ec3d21fd3.jpg)
+![996377as-960](https://user-images.githubusercontent.com/82582647/161723666-490cb467-f184-4bce-84ff-a29ec3d21fd3.jpg)</br>
 The Compressed WIF key must span K... or L... contain 52 characters.</br>
 The Uncompressed WIF key must span 5... contain 51 characters. Use ```-u``` parameter! </br>
 
-Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7 J9tM5JQQSo</br>
-Replace unknown (missing) characters in a row with a capital ```X``` (min. 4, max. 12 X)</br>
+Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7______J9tM5JQQSo</br>
+Replace unknown (missing) characters in a row with a capital ```X``` (min. 4, max. 15 X)</br>
 We collect the key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXX```X```J9tM5JQQSo (52)</br>
 We need to twist the first unknown letter ```X```, this symbol is number 11</br>
 Minimum position -n 9 (-n 51 max, 1-8 this is the checksum it can't be rotated)</br>
-BTC address: 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor</br>
 
 Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQQSo -n 11 -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
 
-![1](https://user-images.githubusercontent.com/82582647/161607233-93a41d63-e506-4369-9785-68036ae794bf.png)
+![1](https://user-images.githubusercontent.com/82582647/162258005-43937a2d-ac2a-419b-a386-c6e80d421bea.png)
+-----
+![2](https://user-images.githubusercontent.com/82582647/162258061-1d3824fc-9ee6-4a08-907b-d275a4dc0d74.png)
 
 | Unknown chars   |      Combinations      |
 |-----------------|------------------------|
@@ -66,15 +68,21 @@ If you are a miner or have more than 10 GPUs and can quickly (upon request) use 
 You can become a member of our team, for this, contact our GPU group https://t.me/+WFEuFatijpowMjRi </br>
 Commission, conditions are negotiated individually.
 
-P.S. If you don't have 10 gpu or WIF key. Don't waste our time, don't join the group. </br>
 If you have general questions ask them [**here**](https://github.com/phrutis/WifSolverCuda/issues)
 
 ## Сontinuation
 Сontinuation of the last checkpoint from the file Сontinuation.txt</br>
 Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7bp7m1SwJ9tM5JQQSo -wif2 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7zzzzzzzJ9tM5JQQSo -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor -c -n 11 -d 0```
 
-![2](https://user-images.githubusercontent.com/82582647/161609712-2111fa71-2e9c-4508-b329-71ebb100d03b.png)
-        
+![3](https://user-images.githubusercontent.com/82582647/162258550-f4dcb651-bb1e-4839-81aa-8e24b607b0a0.png)
+ 
+ ## TURBO MODE
+ - [How Turbo mode works?](https://github.com/phrutis/WifSolverCuda/blob/main/Other/turbo.md#how-turbo-mode-works) </br>
+ 
+ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAaZb5xcbaaJ9tM5JQQSo -n 11 -a 1XXXLcfjKsQCYUAaVj9mk981qkmT5bxvor -turbo 3```
+ 
+ ![turbo](https://user-images.githubusercontent.com/82582647/162259077-80052487-3ca1-4d66-8f77-2d17ac13aed5.png)
+ 
 ## Build
 ### Windows:
 
@@ -93,11 +101,12 @@ Go to WifSolverCuda/ subfolder and execute _make all_. If your device does not s
 | RTX 3090      | 29 Gkey/s                 | 4.0 Gkey/s      |
 | RTX 3080 Ti   | 29 Gkey/s                 | 4.0 Gkey/s      |
 | RTX 3060 eGPU | 10 Gkey/s                 | 1.5 Gkey/s      |
-| RTX 2070      | 10 Gkey/s                 | 1.4 Gkey/s      |
+| RTX 2070      | 12 Gkey/s                 | 1.4 Gkey/s      |
 | GTX 1080TI    | 6 Gkey/s                  | 0.7 Gkey/s      |
 
 If you found this program useful, consider making a donation, I will appreciate it! <br>
 
 ## Donation
-- [PawelGorny](https://github.com/PawelGorny) (author)    bc1qz2akvlch75rqdfg8pv7chqvz3m8jsl49k0kszc </br>
 - [phrutis](https://github.com/phrutis) (modification)    bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
+- [PawelGorny](https://github.com/PawelGorny) (author)    bc1qz2akvlch75rqdfg8pv7chqvz3m8jsl49k0kszc </br>
+
