@@ -45,18 +45,16 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQ
 -----
 ![2](https://user-images.githubusercontent.com/82582647/162258061-1d3824fc-9ee6-4a08-907b-d275a4dc0d74.png)
 
-| Unknown chars   |      Combinations      |
-|-----------------|------------------------|
-|  3 characters   | 195112                 |
-|  4 characters   | 11316496               |
-|  5 characters   | 656356768              |
-|  6 characters   | 38068692544            |
-|  7 characters   | 2207984167552          |
-|  8 characters   | 128063081718016        |
-|  9 characters   | 7427658739644928       |
-|  10 characters  | 430804206899405824     |
-|  11 characters  | 24986644000165537792   | 
-|  12 characters  | 449225352009601191936  | 
+## Performance
+
+| card          | compressed with collision | all other cases |
+|---------------|---------------------------|-----------------|
+| RTX 3090      | 29 Gkey/s                 | 4.0 Gkey/s      |
+| RTX 3080 Ti   | 29 Gkey/s                 | 4.0 Gkey/s      |
+| RTX 3060 eGPU | 10 Gkey/s                 | 1.5 Gkey/s      |
+| RTX 2070      | 12 Gkey/s                 | 1.4 Gkey/s      |
+| GTX 1080TI    | 6 Gkey/s                  | 700 Mkey/s      |
+
 
 You can search for your WIF ourself. </br>
 If there are a lot of characters and you do not decompose the GPU with resources! </br>
@@ -87,26 +85,13 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7bp7m1SwJ9tM5JQ
 ### Windows:
 
 #### Microsoft Visual Studio Community 2019
-- RTX 30xx - CUDA version [**11.6**](https://developer.nvidia.com/cuda-11-6-0-download-archive) compute_cap=86 </br>
-- Others GPUs - CUDA version [**10.2**](https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork) compute_cap=54 </br>
+RTX 30xx - CUDA version [**11.6**](https://developer.nvidia.com/cuda-11-6-0-download-archive) compute_cap=86 use the prepared file WifSolverCuda.vcxproj from the Other folder.</br>
+For others GPUs - CUDA version [**10.2**](https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork) compute_cap=54 </br>
 
 ### Linux:
-Go to WifSolverCuda/ subfolder and execute _make all_. If your device does not support compute capability=86 (error "No kernel image is available for execution on the device"), do the change in _Makefile_ (for example 1080Ti requires COMPUTE_CAP=61).
-
-
-## Performance
-
-| card          | compressed with collision | all other cases |
-|---------------|---------------------------|-----------------|
-| RTX 3090      | 29 Gkey/s                 | 4.0 Gkey/s      |
-| RTX 3080 Ti   | 29 Gkey/s                 | 4.0 Gkey/s      |
-| RTX 3060 eGPU | 10 Gkey/s                 | 1.5 Gkey/s      |
-| RTX 2070      | 12 Gkey/s                 | 1.4 Gkey/s      |
-| GTX 1080TI    | 6 Gkey/s                  | 0.7 Gkey/s      |
-
-If you found this program useful, consider making a donation, I will appreciate it! <br>
+Go to linux/ subfolder and execute _make all_. If your device does not support compute capability=86 (error "No kernel image is available for execution on the device"), do the change in _Makefile_ (for example 1080Ti requires COMPUTE_CAP=61).
 
 ## Donation
+If you found this program useful, consider making a donation, I will appreciate it! <br>
 - [phrutis](https://github.com/phrutis) (modification)    bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 - [PawelGorny](https://github.com/PawelGorny) (author)    bc1qz2akvlch75rqdfg8pv7chqvz3m8jsl49k0kszc </br>
-
