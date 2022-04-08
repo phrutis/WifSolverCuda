@@ -40,3 +40,31 @@ The risk, as you can see, is not big and is justified by an increase in the over
 
 Turbo mode will be relevant for large ranges of 9-15 letters.</br>
 It significantly reduces the search time for the key.</br>
+
+## Explanation of floating speed.
+Every minute the filter checks for the presence of 3 identical letters in the key position.</br>
+If found and replaced, the result of the replacement will appear at the top of the window.</br>
+GPU 0 C: 23.215% [00:23:15] **WIF Was -> WIF Became**</br>
+A missed range is considered passed.</br>
+The number of missed combinations is added to the total.</br>
+If we divide the total by the time, we get the speed.</br>
+
+Example:</br>
+Time [00:00:09]</br>
+Total = 90,000,000,000</br>
+90000000000/9 = speed 10 Gkey/s</br>
+Rated speed 10Gkey/s
+
+Time [00:00:10]</br>
+Turbo (replacement)</br>
+Total = 100,000,000,000 + (missing range)</br>
+
+Total = 100,000,000,000 + 70,000,000,000
+
+Total = 170,000,000,000 / 10 = 17,000 Gkey/s (17,000,000,000)
+
+Time [00:00:11]</br>
+Total = 180,000,000,000 / 11 = 16,363 Gkey/s
+
+Time [00:00:12]</br>
+Total = 190,000,000,000 / 12 = 15,833 Gkey
