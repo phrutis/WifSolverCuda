@@ -1,4 +1,4 @@
-# WifSolverCuda v2.0
+# WifSolverCuda v2.1
 ![116377as-960](https://user-images.githubusercontent.com/82582647/161723196-755b39a1-5fd4-4e9e-bbb6-10932be33244.jpg)</br>
 This is a modified version of WifSolverCuda v0.5.0 by [PawGo](https://github.com/PawelGorny) </br>
 Tool for solving misspelled or damaged Bitcoin Private Key in Wallet Import Format (WIF)
@@ -20,9 +20,6 @@ C:\Users\User>WifSolverCuda.exe -h
 -d               DeviceId. Number GPU (default 0)
 -c               Search for compressed address (default)
 -u               Search for uncompressed address
--b               NbBlocks. Default processorCount * 8
--t               NbThreads. Default deviceMax/8 * 5
--s               NbThreadChecks. Default 5000
 -listDevices     Shows available devices
 -disable-um      Disable unified memory mode
 -h               Shows help page
@@ -33,7 +30,7 @@ C:\Users\User>WifSolverCuda.exe -h
 The Compressed WIF key must span K... or L... contain 52 characters.</br>
 The Uncompressed WIF key must span 5... contain 51 characters. Use ```-u``` parameter! </br>
 
-Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7______J9tM5JQQSo</br>
+Example WIF key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7_________J9tM5JQQSo</br>
 Replace unknown (missing) characters in a row with a capital ```X``` (min. 4, max. 15 X)</br>
 We collect the key: KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXX```X```J9tM5JQQSo (52)</br>
 We need to twist the first unknown letter ```X```, this symbol is number 11</br>
@@ -41,9 +38,7 @@ Minimum position -n 9 (-n 51 max, 1-8 this is the checksum it can't be rotated)<
 
 Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQQSo -n 11 -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
 
-![1](https://user-images.githubusercontent.com/82582647/162258005-43937a2d-ac2a-419b-a386-c6e80d421bea.png)
------
-![2](https://user-images.githubusercontent.com/82582647/162258061-1d3824fc-9ee6-4a08-907b-d275a4dc0d74.png)
+![111](https://user-images.githubusercontent.com/82582647/162493333-c6d0bc07-b004-4cc2-a92b-06d58cfe30e6.png)
 
 ## Performance
 
@@ -70,16 +65,16 @@ If you have general questions ask them [**here**](https://github.com/phrutis/Wif
 
 ## Сontinuation
 Сontinuation of the last checkpoint from the file Сontinuation.txt</br>
-Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7bp7m1SwJ9tM5JQQSo -wif2 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7zzzzzzzJ9tM5JQQSo -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor -c -n 11 -d 0```
+Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7LJ5bPqRJ9tM5JQQSo -wif2 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7zzzzzzzJ9tM5JQQSo -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor -c -n 11 -d 0```
 
-![3](https://user-images.githubusercontent.com/82582647/162258550-f4dcb651-bb1e-4839-81aa-8e24b607b0a0.png)
+![Сontinuation](https://user-images.githubusercontent.com/82582647/162493464-c8964df9-4641-4b40-a17b-67412f69b209.png)
  
  ## TURBO MODE
  - [How Turbo mode works?](https://github.com/phrutis/WifSolverCuda/blob/main/Other/turbo.md#how-turbo-mode-works) </br>
  
  Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAaZb5xcbaaJ9tM5JQQSo -n 11 -a 1XXXLcfjKsQCYUAaVj9mk981qkmT5bxvor -turbo 3```
  
- ![turbo](https://user-images.githubusercontent.com/82582647/162259077-80052487-3ca1-4d66-8f77-2d17ac13aed5.png)
+![turbo](https://user-images.githubusercontent.com/82582647/162493547-6ac23a99-1698-4e4d-8ccb-9042aac1b630.png)
  
 ## Build
 ### Windows:
