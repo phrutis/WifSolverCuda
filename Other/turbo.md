@@ -68,3 +68,13 @@ Total = 180,000,000,000 / 11 = 16,363 Gkey/s
 
 Time [00:00:12]</br>
 Total = 190,000,000,000 / 12 = 15,833 Gkey
+
+## Replacement protection (v3.0)
+Added protection against right character filtering.</br>
+KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAaXXXXXXXJ9tM5JQQSo</br>
+KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa1234567J9tM5JQQSo</br>
+There is a small chance</br>
+KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa12345**JjJ**9tM5JQQSo</br>
+KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa12345Jj**K**]9tM5JQQSo</br>
+Protection will immediately return the symbol to its place</br>
+KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa7654321**J**9tM5JQQSo</br>
