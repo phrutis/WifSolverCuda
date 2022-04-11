@@ -52,14 +52,12 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQ
 
 
 You can search for your WIF ourself. </br>
-If there are a lot of characters and you do not decompose the GPU with resources! </br>
-You can contact our group for help in telegrams https://t.me/+mAY1x5YYuL8yNjQy </br>
-We have quite a lot of GPU resources and we can rent additionally. </br>
-The commission is discussed individually.
+If there are a lot of characters and you do not decompose the GPU with resources. </br>
+You can contact our group for help in [telegrams](https://t.me/+mAY1x5YYuL8yNjQy) </br>
+We have quite a lot of GPU resources</br>
 
 If you are a miner or have more than 10 GPUs and can quickly (upon request) use your resources to complete the task. </br>
-You can become a member of our team, for this, contact our GPU group https://t.me/+WFEuFatijpowMjRi </br>
-Commission, conditions are negotiated individually.
+You can become a member of our team, for this, contact our [GPU group](https://t.me/+WFEuFatijpowMjRi)</br>
 
 If you have general questions ask them [**here**](https://github.com/phrutis/WifSolverCuda/issues)
 
@@ -77,16 +75,16 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAaZvihMARQJ9tM5JQ
 ![recovery part private key](https://user-images.githubusercontent.com/82582647/162636457-25a10c34-0f7c-4554-ae96-3633e47ff796.png)
 
 ## Special mode
-### Finding an extra character on the left -n2 
+### Search for additional letter -n2
+- [How is the extra letter rotated](https://github.com/phrutis/WifSolverCuda/blob/main/Other/turbo.md#how-is-the-extra-letter-rotated) </br>
+
 Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU961wmEtMnACavqnKnEi7eY11111J9tM5JQQSo -n 11 -n2 35 -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
 
 ![paper wallet missing](https://user-images.githubusercontent.com/82582647/162636581-4aa135ec-d84a-4630-811c-32e1fe9c9d19.png)
 
 ## Random mode
-### Random + sequential search for very large ranges
-Use only two parts of the key
-part1 KyBLV6rrV9</br>
-part2 J9tM5JQQSo</br>
+### Random + sequential search
+- [How random works](https://github.com/phrutis/WifSolverCuda/blob/main/Other/turbo.md#how-random-works)
 
 Run: ```WifSolverCuda.exe -part1 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7 -part2 J9tM5JQQSo -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
 
