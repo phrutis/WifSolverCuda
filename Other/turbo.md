@@ -78,3 +78,31 @@ KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa12345**JjJ**9tM5JQQSo</br>
 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa12345Jj**K**]9tM5JQQSo</br>
 Protection will immediately return the symbol to its place</br>
 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa7654321**J**9tM5JQQSo</br>
+
+## How is the extra letter rotated?
+
+Every second the program rotates the main missing letters.
+
+Depending on the speed (power of the gpu), 5 (6*) basic characters can pass.</br>
+*My test showed RTX 2070 5 characters in 1 sec guaranteed.</br>
+Perhaps the RTX 3090 will be able to pass 6 basic characters.</br>
+
+Then an additional letter is added and the main range starts over.</br>
+
+```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU961wmEtMnACavqnKnEi7eY11111J9tM5JQQSo -n 11 -n2 35 -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
+
+An illustrative example:</br>
+KyBLV6rrV9hsbsU961wmEtMnACavqnKnEi7eY[**11111**]J9tM5JQQSo</br>
+KyBLV6rrV9hsbsU961wmEtMnACavqnKnEi7eZ[**zzzzz**]J9tM5JQQSo</br>
+
+Adding a letter
+KyBLV6rrV9hsbsU96[**2**]wmEtMnACavqnKnEi7eY11111J9tM5JQQSo</br>
+...</br>
+KyBLV6rrV9hsbsU9[**zz**]wmEtMnACavqnKnEi7eY11111J9tM5JQQSo</br>
+...</br>
+KyBLV6rrV9hsbsU[**zzz**]wmEtMnACavqnKnEi7eY11111J9tM5JQQSo</br>
+
+1 extra character = 60 sec</br>
+2 additional characters = 60 min.</br>
+3 additional characters = 60 hours</br>
+
