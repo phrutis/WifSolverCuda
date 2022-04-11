@@ -75,6 +75,7 @@ KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAaXXXXXXXJ9tM5JQQSo</br>
 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa1234567J9tM5JQQSo</br>
 There is a small chance</br>
 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa12345**JjJ**9tM5JQQSo</br>
+(turbo)</br>
 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa12345Jj**K**]9tM5JQQSo</br>
 Protection will immediately return the symbol to its place</br>
 KyBLV6rrV9hsbsU96VwmEtMnACavqnKnAa7654321**J**9tM5JQQSo</br>
@@ -102,7 +103,35 @@ KyBLV6rrV9hsbsU9[**zz**]wmEtMnACavqnKnEi7eY11111J9tM5JQQSo</br>
 ...</br>
 KyBLV6rrV9hsbsU[**zzz**]wmEtMnACavqnKnEi7eY11111J9tM5JQQSo</br>
 
-1 extra character = 60 sec</br>
+You can search in reverse</br>
+```WifSolverCuda.exe -wif KyBLV6rrV9hsb11111wmEtMnACavqnKnEi7ea611J9tM5JQQSo -n 35 -n2 11 -a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor```
+
+1 extra character (-n2) = 60 sec</br>
 2 additional characters = 60 min.</br>
 3 additional characters = 60 hours</br>
+
+## How random works
+This mode is for long ranges.</br>
+You only ask:</br>
+-part1 KyBLV6rrV9hsbsU96V</br>
+-part2 tM5JQQSo (min. 8 characters)</br>
+-a 1EpMLcfjKsQCYUAaVj9mk981qkmT5bxvor</br>
+
+The program automatically fills in the missing characters with random letters.</br>
+Calculates the correct step and starts working.</br>
+Every 30 sec. the range of random starting characters will be updated.</br>
+
+The advantage of this mode</br>
+If the range is 12-20 characters and it is not physically possible to sort through it sequentially.</br>
+You can try your luck like in the lottery.</br>
+Since there is no need to sort through a huge number of ranges with the same characters.</br>
+With a random search, the chance of finding will be higher than a regular search.</br>
+
+Disadvantages:</br>
+Random is not effective on small ranges.</br>
+
+If your gpu resources allow you to go through the entire range, sequential enumeration is better.</br>
+
+Random is like a lottery - you can find it very quickly, or you may not get the desired combination at all.</br>
+
 
