@@ -51,8 +51,7 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQ
 | RTX 2070      | 12 Gkey/s                 | 1.4 Gkey/s      |
 | GTX 1080TI    | 6 Gkey/s                  | 700 Mkey/s      |
 
-If the speed is several times higher than in the table. </br>
-Your WIF key is not correct.</br>
+If the speed is several times higher than in the table. Your WIF key is not correct.</br>
 
 If you need help recovering your private key, contact [telegram](https://t.me/+mAY1x5YYuL8yNjQy) </br>
 
