@@ -1,7 +1,8 @@
 # WifSolverCuda v3.0
 ![Recovers a broken private key that misses characters](https://user-images.githubusercontent.com/82582647/161723196-755b39a1-5fd4-4e9e-bbb6-10932be33244.jpg)</br>
 This is a modified version of WifSolverCuda v0.5.0 by [PawGo](https://github.com/PawelGorny) </br>
-Tool for solving misspelled or damaged Bitcoin Private Key in Wallet Import Format (WIF)
+This is a soft for recovering unknown (lost) characters in the middle and beginning of a (Wallet Import Format) private key. </br>
+If you have a lost WIF private key end (on the right), use soft [**Wif key Recovery**](https://github.com/phrutis/Wif-key-Recovery)
 
 Help page: ```WifSolverCuda.exe -h```
 ```
@@ -46,20 +47,14 @@ Run: ```WifSolverCuda.exe -wif KyBLV6rrV9hsbsU96VwmEtMnACavqnKnEi7XXXXXXXJ9tM5JQ
 |---------------|---------------------------|-----------------|
 | RTX 3090      | 29 Gkey/s                 | 4.0 Gkey/s      |
 | RTX 3080 Ti   | 29 Gkey/s                 | 4.0 Gkey/s      |
-| RTX 3060 eGPU | 10 Gkey/s                 | 1.5 Gkey/s      |
+| RTX 3060 eGPU | 10 Gkey/s                 | 1.3 Gkey/s      |
 | RTX 2070      | 12 Gkey/s                 | 1.4 Gkey/s      |
 | GTX 1080TI    | 6 Gkey/s                  | 700 Mkey/s      |
 
+If the speed is several times higher than in the table. </br>
+Your WIF key is not correct.</br>
 
-You can search for your WIF ourself. </br>
-If there are a lot of characters and you do not decompose the GPU with resources. </br>
-You can contact our group for help in [telegrams](https://t.me/+mAY1x5YYuL8yNjQy) </br>
-We have quite a lot of GPU resources</br>
-
-If you are a miner or have more than 10 GPUs and can quickly (upon request) use your resources to complete the task. </br>
-You can become a member of our team, for this, contact our [GPU group](https://t.me/+WFEuFatijpowMjRi)</br>
-
-If you have general questions ask them [**here**](https://github.com/phrutis/WifSolverCuda/issues)
+If you need help recovering your private key, contact [telegram](https://t.me/+mAY1x5YYuL8yNjQy) </br>
 
 ## Сontinuation
 Сontinuation of the last checkpoint from the file Сontinuation.txt</br>
